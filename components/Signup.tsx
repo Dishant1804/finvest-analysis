@@ -25,6 +25,10 @@ const SignUpComponent = () => {
     setPassword(e.target.value)
   }
 
+  const handleSignInclick = () => [
+    router.push('/signin')
+  ]
+
   const handleGetstartedButton = async () => {
     const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/signup`, {
       username,
@@ -34,8 +38,8 @@ const SignUpComponent = () => {
       withCredentials: true
     })
     console.log(res.data)
-    if(res.data){
-      window.localStorage.setItem("userid" , res.data.id)
+    if (res.data) {
+      window.localStorage.setItem("userid", res.data.id)
       router.push('/analyze')
     }
   }
@@ -61,11 +65,14 @@ const SignUpComponent = () => {
           </div>
           <div className="w-full flex flex-col gap-2">
             <h3 className="text-lg text-white/90">Password</h3>
-            <Input className="border border-neutral-600 text-white/90" placeholder="Password" onChange={handlePassword} value={password} />
+            <Input type="password" className="border border-neutral-600 text-white/90" placeholder="Password" onChange={handlePassword} value={password} />
           </div>
         </div>
 
         <Button className="w-full mt-6 bg-blue-gradient text-black hover:scale-101" onClick={handleGetstartedButton}>Get started <ArrowRight /> </Button>
+        <div className="w-full flex justify-center items-center mt-3">
+          <h5 className="text-sm text-neutral-500">already have an account? <span onClick={handleSignInclick} className="underline cursor-pointer">SignIn</span></h5>
+        </div>
       </div>
     </div>
   </div>
