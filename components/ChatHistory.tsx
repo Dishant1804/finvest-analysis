@@ -47,7 +47,7 @@ const ChatHistory = ({
   const loadConversations = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:8000/users/${userId}/conversations`);
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/${userId}/conversations`);
       setConversations(response.data);
     } catch (error) {
       console.error("Error loading conversations:", error);
@@ -58,7 +58,7 @@ const ChatHistory = ({
 
   const handleNewConversation = async () => {
     try {
-      const response = await axios.post(`http://localhost:8000/conversations?user_id=${userId}`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/conversations?user_id=${userId}`, {
         title: "New Conversation"
       });
       await loadConversations();
@@ -72,7 +72,7 @@ const ChatHistory = ({
     if (!confirm("Are you sure you want to delete this conversation?")) return;
 
     try {
-      await axios.delete(`http://localhost:8000/conversations/${conversationId}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/conversations/${conversationId}`);
       await loadConversations();
       if (conversationId === currentConversationId) {
         onNewConversation?.();
@@ -84,7 +84,7 @@ const ChatHistory = ({
 
   const handleEditTitle = async (conversationId: string, newTitle: string) => {
     try {
-      await axios.put(`http://localhost:8000/conversations/${conversationId}`, {
+      await axios.put(`${process.env.NEXT_PUBLIC_BACKEND_URL}/conversations/${conversationId}`, {
         title: newTitle
       });
       await loadConversations();

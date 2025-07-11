@@ -54,7 +54,7 @@ const Analyze = () => {
     setMessages(prev => [...prev, userMessage]);
 
     try {
-      const response = await axios.post("http://localhost:8000/analyze", {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/analyze`, {
         query: currentPrompt,
         user_id: userId,
         conversation_id: conversationId
