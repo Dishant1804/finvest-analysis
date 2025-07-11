@@ -78,7 +78,7 @@ export const socialMedia = [
   },
   {
     id: "social-media-5",
-    icon : faGithub,
-    link : "https://github.com/Dishant1804",
+    icon: faGithub,
+    link: "https://github.com/Dishant1804",
   }
 ];
