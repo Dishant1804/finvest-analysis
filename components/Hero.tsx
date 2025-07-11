@@ -1,8 +1,21 @@
+"use client"
+
 import { discount } from "../app/assets";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const Hero = () => (
-  <>
+const Hero = () => {
+  const router = useRouter()
+
+  const handleSignup = () => {
+    router.push('/signup')
+  }
+
+  const handleExplore = () => {
+    document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  return <>
     <div className="absolute bg-blue-gradient z-[10] h-[200px] w-[400px] top-96 right-32 blur-[200px] rounded-full">
     </div>
     <div className="absolute bg-blue-gradient z-[10] h-[200px] w-[200px] top-24 left-32 blur-[120px] rounded-full">
@@ -29,12 +42,12 @@ const Hero = () => (
           Analyze your stocks with our AI agent and make informed investment decisions with real-time market insights and comprehensive financial data.
         </p>
         <div className="flex flex-row justify-center items-center mt-8 gap-6">
-          <button className="bg-blue-gradient text-black px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95">Get started</button>
-          <button className="bg-black-gradient text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95">Explore now</button>
+          <button onClick={handleSignup} className="bg-blue-gradient text-black px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95">Get started</button>
+          <button onClick={handleExplore} className="bg-black-gradient text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95">Explore now</button>
         </div>
       </div>
     </section>
   </>
-);
+}
 
 export default Hero;
