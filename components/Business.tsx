@@ -26,7 +26,7 @@ const FeatureCard = ({ icon, title, content, index }: { icon: string; title: str
 const Business = () => {
   return (
     <section id="features" className="flex md:flex-row flex-col">
-      <div className="flex-1 flex justify-center items-start flex-col">
+      <div className="flex-1 flex justify-center md:items-start items-center flex-col text-center md:text-left">
         <h2 className="font-poppins font-semibold xs:text-[48px] text-[40px] text-white xs:leading-[76.8px] leading-[66.8px] w-full">
           You make the trades,
           <br className="sm:block hidden" /> we’ll handle the analysis.
